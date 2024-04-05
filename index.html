@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickSearcher</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/background-dialog.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="js/jquery.loadTemplate.min.js"></script>
+
+    <script src="js/Sortable.min.js"></script>
+    <script src="js/jquery-sortable.js"></script>
+    <script src="js/progressive-blur.js"></script>
+    <script src="js/website-list.js"></script>
+
+    <script src="js/engine-data.js"></script>
+    <script src="js/index.js"></script>
+</head>
+
+<body>
+    <div class="snap" style="position: fixed; width: calc(50% - 300px); height: 100%; top:0; left:0;"></div>
+    <div id="searcher" class="background">
+        <form name="search">
+            <section id="tabs">
+                <div class="engine-tabs">
+                    <script class="engine-button" type="text/html">
+                        <input type="radio" name="engine" data-id="name" class="visually-hidden" data-value="name">
+                        <label data-template-bind='[{"attribute": "for", "value": "name"}]'>
+                                <img data-src="icon" data-alt="name">
+                                <span data-content="name"></span>
+                        </label>
+                        </script>
+                </div>
+            </section>
+            <section id="search-bar">
+                <div class="search-box">
+                    <input type="text" spellcheck="false" autocorrect="off">
+                    <button type="reset">
+                        <img src="img/symbol/clear.svg" alt="clear">
+                    </button>
+                </div>
+            </section>
+            <section id="output">
+                <section id="suggest">
+                    <script class="suggest-box" type="text/html">
+                        <ul data-class>
+                            <script class="recommend-item" type="text/html">
+                                <button class="recommend-item">
+                                    <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.cnn.com/&size=64" alt="">
+                                    <p>
+                                        <span class="title">CNN</span>
+                                        <span class="url">https://www.cnn.com/</span>
+                                    </p>
+                                </button>
+                            </script>
+                    <script class="suggest-item" type="text/html">
+                                <button data-class="type">
+                                    <span class="title" data-content="title"></span>
+                                    <span class="caption" data-content="caption"></span>
+                                </button>
+                            </script>
+                    </ul>
+                    </script>
+                </section>
+            </section>
+        </form>
+    </div>
+</body>
+
+</html>
