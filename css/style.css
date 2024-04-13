@@ -1,16 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@400;500;600&family=Noto+Sans+JP:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 body {
-    font-family: system-ui, sans-serif;
+    font-family: "Inter", sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
     width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
+    z-index: -1;
 }
 
 body>button {
@@ -53,7 +53,7 @@ body>button:active {
 }
 
 .toggle_input:checked+.toggle_label {
-    background-color: #0a80ff;
+    background-color: #0068f0;
 }
 
 .toggle_input:focus-visible+.toggle_label {
@@ -100,7 +100,7 @@ form {
 }
 
 #searcher {
-    width: 600px;
+    width: 640px;
     position: absolute;
     top: 100px;
     left: calc(50% - 300px);
@@ -109,107 +109,45 @@ form {
     align-items: center;
     border-radius: 13px;
     border: 1px solid var(--primary-border-color);
-    background: #f1f1f1cb;
+    background: #f6f6f6cb;
     box-shadow: 0px 1px 16.5px 0px #00000024;
     backdrop-filter: blur(40px);
 }
 
-#tabs {
-    display: flex;
-    gap: 2px;
-    padding: 7px;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-#tabs .engine-tabs {
-    display: flex;
-    gap: 2px;
-}
-
-#tabs label {
-    border-radius: 7px;
-    gap: 4px;
-    padding: 0px 8px;
-    min-width: 86px;
-    height: 64px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    user-select: none;
-    font-size: 15px;
-    color: #000000b0;
-}
-
-#tabs label.sortable-chosen {
-    background-color: transparent !important;
-}
-
-#tabs label.sortable-ghost {
-    opacity: 0;
-}
-
-#tabs label img {
-    width: 32px;
-    user-select: none;
-    border-radius: 8px;
-}
-
-#tabs .engine-tabs img {
-    border: 1px solid #00000021;
-}
-
-#tabs button[visible=false] {
-    display: none;
-}
-
-#tabs input:checked+label {
-    background-color: #00000011;
-}
-
-#tabs label:active {
-    background-color: #00000019 !important;
-    outline: none;
-}
-
-#tabs button.add-engine {
-    position: absolute;
-    right: 14px;
-    top: -28px;
-    visibility: hidden;
-    opacity: 0.82;
-    display: flex;
-    font-size: 14px;
-    align-items: center;
-    gap: 4px;
-}
-
-#tab:not(li):hover button.add-engine {
-    visibility: visible;
-}
-
-#tabs button.add-engine:hover {
-    opacity: 1;
-}
-
 #search-bar {
     width: 100%;
-    border-top: 1px solid var(--secondary-border-color);
+    height: 52px;
+    display: flex;
+    align-items: center;
+}
+
+#search-bar img.left-icon {
+    width: 26px;
+    display: block;
+    flex-shrink: 0;
+    box-sizing: content-box;
+    padding: 0 10px;
+    padding-right: 4px;
+    border-radius: 6px;
+}
+
+#search-bar img.right-icon {
+    width: 38px;
+    margin-right: 10px;
 }
 
 #search-bar .search-box {
     display: flex;
+    width: 100%;
+    height: 100%;
     align-items: center;
 }
 
 #search-bar input {
     width: 100%;
     height: 100%;
-    font-size: 21px;
-    padding: 14px;
+    font-size: 20px;
+    padding: 0px;
     padding-right: 0;
     background: none;
     border: none;
@@ -225,36 +163,33 @@ form {
     color: black;
     background: #0a80ff38;
 }
-
-#search-bar:has(input:placeholder-shown)+#output ul {
-    display: none;
-}
-
-#search-bar button.reset {
-    margin: 10px;
-    border-radius: 18px;
-    padding: 4px;
-}
-
-#search-bar input:placeholder-shown+button.reset {
-    display: none;
-}
-
 #suggest ul {
     border-top: 1px solid var(--secondary-border-color);
     display: flex;
     flex-direction: column;
-    padding: 7px;
+    padding: 8px;
 }
 
 #suggest button {
     width: 100%;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 8px;
-    border-radius: 7px;
-    gap: 4px;
+    align-items: center;
+    padding: 6px 6px;
+    border-radius: 6px;
+    gap: 6px;
+    position: relative;
+}
+
+#suggest button img.icon{
+    width: 32px;
+    flex-shrink: 0;
+    box-sizing: content-box;
+}
+
+#suggest button img.icon.hide{
+    visibility: hidden;
+    height: 26px;
+    width: 20px;
 }
 
 #suggest button:hover {
@@ -262,7 +197,7 @@ form {
 }
 
 #suggest button.selected {
-    background-color: #0a80ffca;
+    background-color: #0078f0e8;
     color: white;
     outline: none;
 }
@@ -271,19 +206,45 @@ form {
     display: none;
 }
 
-#suggest ul button .caption {
-    font-size: 13px;
-    height: fit-content;
-    opacity: 0.8;
-    align-items: baseline;
+#suggest ul button p.title {
+    padding: 3px 5px;
 }
 
-#suggest ul button .caption span {
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 3;
-    text-overflow: ellipsis;
+#suggest ul button .caption {
+    font-size: 16px;
+    width: 32px;
+    opacity: 0.7;
+    position: absolute;
+    letter-spacing: -0.06rem;
+    right: 0;
+    font-family: "Roboto Mono", monospace;
+}
+
+#bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 6px;
+    gap: 14px;
+    border-top: 1px solid var(--secondary-border-color);
+}
+
+#bottom-bar .border {
+    width: 2px;
+    height: 16px;
+    background-color: #00000019;
+}
+
+#bottom-bar button.option {
+    font-size: 14px;
+    padding: 5px;
+}
+
+span.key {
+    padding: 4px;
+    background-color: #00000019;
+    border-radius: 5px;
+    font-size: 13px;
 }
 
 background-img {
@@ -305,23 +266,6 @@ background-img img[src=""] {
 
 background-img img {
     object-fit: cover;
-}
-
-#searcher.background {
-    background: rgba(248, 248, 248, 0.8);
-    backdrop-filter: blur(26px);
-    -webkit-backdrop-filter: blur(26px);
-    box-shadow: 0px 7px 22px 0px rgba(0, 0, 0, 0.25), 0px 0px 1.5px 0px rgba(0, 0, 0, 0.30), 0px 0px 1px 0px rgba(0, 0, 0, 0.40);
-}
-
-#searcher.background button.selected {
-    background-color: #00000016;
-    color: black;
-}
-
-#searcher.background #search-bar ::selection {
-    color: black;
-    background: #00000023;
 }
 
 footer {
