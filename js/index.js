@@ -1,161 +1,47 @@
 $(function () {
-    engineData = searcher.engineData.applied
+    engineData = [
+        {
+            name: 'google',
+            icon: "img/icon/google.svg",
+            command: "",
+            url: {
+                suggest: "https://www.google.com/complete/search?client=firefox&q=",
+                search: "https://www.google.com/search?q=",
+                home: "https://www.google.com"
+            },
 
-    class Background {
-        create() {
-            new Searcher().saveLocalStorage()
-
-            $("background-img").removeAttr("class")
-            $("background-img img").hide()
-            $("background-img").addClass(searcher.settings.background.genre)
-
-            $("#searcher").addClass("background")
-            $("background-img").attr("time", this.time)
-
-            switch (searcher.settings.background.genre) {
-                case "default":
-                    $("footer").removeClass("inversion")
-                    $("#searcher").removeClass("background")
-                    $("body>button").removeClass("inversion")
-                    break
-
-                case "timechange":
-                    $("footer").removeClass("inversion")
-                    $("body>button").addClass("inversion")
-                    $("background-img").fadeIn()
-                    break
-
-                case "random":
-                    $("body>button").addClass("inversion")
-                    $("footer").addClass("inversion")
-                    $("background-img img").attr("src",
-                        'https://source.unsplash.com/random/1920x1080/?' + searcher.settings.background.words
-                    )
-                    $("background-img img").on('load', () => {
-                        $("background-img img").fadeIn()
-                    })
-                    break
-
-                case "image":
-                    $("body>button").addClass("inversion")
-                    $("footer").removeClass("inversion")
-                    $("background-img img").attr("src",
-                        searcher.settings.background.imgURL
-                    )
-                    $("background-img img").on('load', () => {
-                        $("background-img img").fadeIn()
-                    })
-            }
+        },
+        {
+            name: "youtube",
+            icon: "img/icon/youtube.svg",
+            command: "/y ",
+            url: {
+                suggest: "https://clients1.google.com/complete/search?hl=en&ds=yt&client=firefox&q=",
+                search: "https://www.youtube.com/results?search_query=",
+                home: "https://www.youtube.com"
+            },
+        },
+        {
+            name: "wikipedia",
+            icon: "img/icon/wikipedia.svg",
+            command: "/w ",
+            url: {
+                suggest: "https://ja.wikipedia.org/w/api.php?action=opensearch&format=json&search=",
+                search: "https://ja.wikipedia.org/w/index.php?search=",
+                home: "https://www.ja.wikipedia.org"
+            },
+        },
+        {
+            name: "x",
+            icon: "img/icon/twitter.svg",
+            command: "/x ",
+            url: {
+                suggest: "",
+                search: "https://ja.wikipedia.org/w/index.php?search=",
+                home: "https://www.x.com"
+            },
         }
-        get time() {
-            const currentTime = new Date().getHours()
-            switch (true) {
-                case currentTime >= 5 && currentTime < 7: return 'twilight'
-                    break
-                case currentTime >= 7 && currentTime < 9: return 'sunrise'
-                    break
-                case currentTime >= 9 && currentTime < 18: return 'day'
-                    break
-                case currentTime >= 18 && currentTime < 21: return 'evening'
-                    break
-                case currentTime >= 21 && currentTime < 22: return 'twilight'
-                    break
-                default: return "night"
-            }
-        }
-    }
-
-    class BackgroundDialog {
-        create() {
-            $("#settings input#keyword").val(searcher.settings.background.words)
-            $("#settings input#url").val(searcher.settings.background.imgURL)
-            console.log(searcher.settings.background)
-            if (searcher.settings.background.genre === 'default') {
-                $(`#settings input#toggle`).prop("checked", false)
-            } else {
-                $(`#settings input#toggle`).prop("checked", true)
-                $(`#settings input[type='radio']`).val([searcher.settings.background.genre])
-            }
-
-            $("#settings input").on("input", () => {
-                if ($("#settings input#toggle").prop("checked")) {
-                    searcher.settings.background.words = $("input#keyword").val()
-                    searcher.settings.background.imgURL = $("input#url").val()
-                    searcher.settings.background.genre = $("#settings input[type='radio']:checked").prop("id")
-                } else {
-                    searcher.settings.background.genre = "default"
-                }
-                new Background().create()
-            })
-
-        }
-    }
-
-    class Searcher {
-        create() {
-            if (localStorage.getItem("searcher") === null) {
-
-            } else {
-                searcher = JSON.parse(localStorage.getItem("searcher"))
-            }
-        }
-        saveLocalStorage() {
-            localStorage.setItem("searcher", JSON.stringify(searcher))
-        }
-    }
-
-    class Tabs {
-        constructor(name) {
-            this.name = name
-        }
-        create() {
-            $("#tabs .engine-tabs").loadTemplate($(".engine-button"), engineData)
-
-            $("#tabs input").click(function (e) {
-                let name = $(this).val()
-                new Tabs(name).select()
-                new Suggest().create()
-                new Suggest().deselect()
-            })
-
-            $("#tabs").sortable({
-                animation: 350,
-                draggable: 'button',
-                ghostClass: 'sortable-ghost',
-                onUpdate: () => {
-                    $("#tabs button").blur()
-                }
-            })
-        }
-        select() {
-            if (this.selectingEngineData === "settings") {
-                $("#search-bar").hide()
-                $("#suggest").hide()
-                $("#settings table").show()
-            } else {
-                $(`#tabs input[value="${this.name}"]`).prop("checked", true)
-                $("#suggest").show()
-                $("#settings table").hide()
-                $("#search-bar").show()
-                new SearchBox().setPlaceholder()
-            }
-        }
-
-        get selectingEngineData() {
-            let name = $(`#tabs input:checked`).val()
-            if (name === "settings") {
-                return "settings"
-            } else {
-                let data = engineData.find(engineData => engineData.name === name)
-
-                return data
-            }
-        }
-
-        get selectingEngineIndex() {
-            return engineData.indexOf(this.selectingEngineData)
-        }
-    }
+    ]
 
     let realValue
     class SearchBox {
@@ -165,10 +51,32 @@ $(function () {
         create() {
             $("form").submit(function (e) {
                 e.preventDefault()
-                engineData[new Tabs().selectingEngineIndex].history.unshift(new SearchBox().data.value)
-                new Searcher().saveLocalStorage()
-                console.log(engineData)
-                //location.assign(new Tabs().selectingEngineData.url.search + new SearchBox().data.value)
+                if ($("#search-bar input").val().length === 0) {
+                    tabPageToggle()
+                }
+                if (new SearchBox().value.length === 0 && $("#search-bar input").val().length === 3) {
+                    if (tabPageWay === "page") {
+                        window.top.location.href = new Suggest().selectingEngineData.url.home
+                    } else {
+                        if (tabPageWay === "tab") {
+                            window.top.open(new Suggest().selectingEngineData.url.home)
+                        }
+                    }
+                }
+                if (new SearchBox().value.length) {
+                    if (tabPageWay === "page") {
+                        window.top.location.href = new Suggest().selectingEngineData.url.search + new SearchBox().value
+                    } else {
+                        if (tabPageWay === "tab") {
+                            window.top.open(new Suggest().selectingEngineData.url.search + new SearchBox().value)
+                        }
+                    }
+                }
+            })
+
+            $("button.reset").on("click", function () {
+                $("#search-bar input").val("")
+                $("#search-bar input").focus()
             })
 
             $("#search-bar input").keydown(function (e) {
@@ -185,18 +93,12 @@ $(function () {
                     let index = new Suggest().selectingSuggestItemIndex + 1
                     new Suggest(index).select()
                 }
-                if (e.key === "ArrowLeft" & new SearchBox().data.value.length === 0) {
-                    e.preventDefault()
-                    new Tabs(engineData[new Tabs().selectingEngineIndex - 1].name).select()
-                }
-                if (e.key === "ArrowRight" & new SearchBox().data.value.length === 0) {
-                    e.preventDefault()
-                    new Tabs(engineData[new Tabs().selectingEngineIndex + 1].name).select()
-                }
             })
 
-            $("#search-bar input").on("input", (e) => {
-                if (e.key === "ArrowDown" || e.key === "ArrowUp" || e.key === "ArrowLeft" || e.key === "ArrowRight") {
+            $("#search-bar input").on("keyup", (e) => {
+                //アイコン変更
+                $("#search-bar img.right-icon").attr("src", new Suggest().selectingEngineData.icon)
+                if (e.key === "ArrowDown" || e.key === "ArrowUp") {
                     return false
                 }
                 new Suggest().create()
@@ -206,20 +108,15 @@ $(function () {
                 this.formReset()
             })
         }
-        get data() {
-            return {
-                value: $("#search-bar input").val(),
-
-                toha: $("#search-bar input").val().includes("とは"),
-                wordValue: $("#search-bar input").val().replace("とは", "")
+        get value() {
+            if (new Suggest().selectingEngineData.name != "google") {
+                return $("#search-bar input").val().slice(3)
             }
+            return $("#search-bar input").val()
         }
         setValue() {
             $("#search-bar input").val(this.val)
             $("#search-bar input").select()
-        }
-        setPlaceholder() {
-            $("#search-bar input")[0].placeholder = new Tabs().selectingEngineData.label
         }
         formReset() {
             this.setValue()
@@ -227,61 +124,86 @@ $(function () {
         }
     }
 
-    function getIsDuplicate(arr1, arr2) {
-        return arr1.filter(item => arr2.includes(item)).length
+    tabPageWay = "tab"
+    function tabPageToggle() {
+        if (tabPageWay === "page") {
+            tabPageWay = "tab"
+            $("#search-bar input").attr("placeholder", "新しいタブで開く...")
+            $("#bottom-bar button.tab-page span.tab-page-context").text("ページに移動")
+        } else {
+            if (tabPageWay === "tab") {
+                tabPageWay = "page"
+                $("#search-bar input").attr("placeholder", "ページに移動...")
+                $("#bottom-bar button.tab-page span.tab-page-context").text("新しいタブで開く")
+            }
+        }
+    }
+
+    function suggestAppend(value, icon, title, caption) {
+
+        $("#suggest ul").loadTemplate($(".suggest-item"), {
+            value: value, icon: icon, title: title, caption: caption, onclick: "window.top.open('" + new Suggest().selectingEngineData.url.search + title + "')"
+        }, {
+            append: true,
+        })
+        if ($("#suggest ul").hasClass("command")) {
+            $("#suggest ul button").removeAttr("onclick")
+        }
+        if (icon === undefined) {
+            $("#suggest button img").addClass("hide")
+        }
     }
 
     class Suggest {
         constructor(index) {
             this.index = index
         }
+
         create() {
-            realValue = new SearchBox().data.value
+            realValue = $("#search-bar input").val()
+            if (!realValue.length) {  //0
+                $("#suggest ul").remove()
+                $("#suggest").loadTemplate($(".suggest-box"), "command", {
+                    append: true
+                })
+                suggestAppend("/y ", "img/icon/youtube.svg", "Youtubeで検索", "/y")
+                suggestAppend("/w ", "img/icon/wikipedia.svg", "Wikipediaで検索", "/w")
+                suggestAppend("/x ", "img/icon/twitter.svg", "Xで検索", "/x")
+
+                $("#suggest ul button").on("click", function () {
+                    new Suggest($("#suggest ul button").index(this)).select()
+                })
+                return false;
+            } else {
+                if (this.selectingEngineData.name === "x") {
+                    $("#suggest ul.command").remove()
+                }
+            }
+
             $.ajax({
-                url: new Tabs().selectingEngineData.url.suggest + new SearchBox().data.value,
+                url: this.selectingEngineData.url.suggest + new SearchBox().value,
                 type: "GET",
                 dataType: "jsonp",
                 jsonpCallback: "callback",
             }).done(data => {
                 $("#suggest ul").remove()
-                $("#suggest").loadTemplate($(".suggest-box"), new SearchBox().data.value, {
+                $("#suggest").loadTemplate($(".suggest-box"), new SearchBox().value, {
+                    append: true, complete: () => {
+                        if (!data[1].length) {
+                            $("#suggest ul").remove()
+                        }
+                    }
+                })
+                data[1].forEach(element => {
+                    suggestAppend(this.selectingEngineData.command + element, undefined, element, "")
+                })
+                $("#suggest ul").loadTemplate($(".suggest-item"), data[1], {
                     append: true,
                 })
-
-                data[1].map((e) => data[1].push({ title: e, type: "suggest" }))
-
-                $("#suggest ul").loadTemplate($(".suggest-item"), data[1], { append: true })
-
-
                 $("#suggest button:has(.title:empty)").remove()
-
-
-                let websiteListNameArray = website_list.map(element => {
-                    return element.name.toLowerCase()
-                })
             })
-
-            //Suggest Wikipedia
-            if (new SearchBox().data.toha === true) {
-                $.ajax({
-                    url: "https://ja.wikipedia.org/w/api.php?action=query&prop=extracts&exintro&explaintext&redirects=1&titles=" + new SearchBox().data.wordValue + "&format=json",
-                    type: "GET",
-                    dataType: "jsonp",
-                }).done(data => {
-                    let extract = data.query.pages[Object.keys(data.query.pages)].extract
-                    $("#suggest ul").loadTemplate($(".suggest-item"), {
-                        title: new SearchBox().data.wordValue,
-                        caption: extract,
-                        type: "caption"
-                    }, {
-                        append: true, success: () => {
-                            $("#suggest button span:empty").parents(".caption").remove()
-                        }
-                    })
-                })
-            }
-
         }
+
         remove() {
             $("#suggest ul").remove()
         }
@@ -291,7 +213,23 @@ $(function () {
         }
 
         get selectingSuggestItemWord() {
-            return $("#suggest ul button .title").eq(this.index).html()
+            return $("#suggest ul button").eq(this.index).val()
+        }
+
+        get selectingEngineData() {
+            switch ($("#search-bar input").val().slice(0, 3)) {
+                case "/y ":
+                    return engineData.find(e => e.command === "/y ")
+                    break
+                case "/w ":
+                    return engineData.find(e => e.command === "/w ")
+                    break
+                case "/x ":
+                    return engineData.find(e => e.command === "/x ")
+                    break
+                default:
+                    return engineData.find(e => e.name === "google")
+            }
         }
 
         select() {
@@ -305,13 +243,16 @@ $(function () {
                 return false
             }
 
-
             $("#suggest ul button").eq(this.index).addClass("selected")
             new SearchBox(this.selectingSuggestItemWord).setValue()
-
-            if (this.selectingSuggestItemWord.toLowerCase().indexOf(realValue.toLowerCase()) === 0) {
+            if (new SearchBox().value.length) {
+                if (this.selectingSuggestItemWord.toLowerCase().indexOf(realValue.toLowerCase()) === 0) {
+                    $("#search-bar input").focus()
+                    $("#search-bar input")[0].setSelectionRange(realValue.length, this.selectingSuggestItemWord.length)
+                }
+            } else {
                 $("#search-bar input").focus()
-                $("#search-bar input")[0].setSelectionRange(realValue.length, this.selectingSuggestItemWord.length)
+                $("#search-bar input")[0].setSelectionRange(3, 3)
             }
         }
 
@@ -324,12 +265,8 @@ $(function () {
         }
     }
 
-    new Tabs().create()
     new SearchBox().create()
-
-    new Tabs('検索').select()
-
-    new Searcher().create()
-    new Background().create()
-    new BackgroundDialog().create()
+    new Suggest().create()
+    $("#searcher").draggable()
+    tabPageToggle()
 })
