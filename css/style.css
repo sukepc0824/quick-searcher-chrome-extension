@@ -4,7 +4,7 @@
 :root {
     --main-text: #0d0d0d;
     --main-bg: #f4f4f4cb;
-    --backdrop: #f4f4f434;
+    --backdrop: #f4f4f44e;
     --highlight-bg:#00000018;
     --selection-bg:#0000000e;
     --primary-border-color: #00000033;
@@ -19,7 +19,7 @@
     :root {
         --main-text: #f4f4f4;
         --main-bg: #242424cb;
-        --backdrop: #00000034;
+        --backdrop: #0000004e;
         --highlight-bg:#ffffff15;
         --selection-bg:#ffffff0e;
         --primary-border-color: #ffffff5b;
