@@ -1,0 +1,342 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+/*ライトモードの場合は、次の変数が適用される*/
+:root {
+    --main-text: #0d0d0d;
+    --main-bg: #f4f4f4cb;
+    --backdrop: #f4f4f44e;
+    --highlight-bg:#00000018;
+    --selection-bg:#0000000e;
+    --primary-border-color: #00000033;
+    --secondary-border-color: #00000020;
+}
+
+.dark-mode {
+    display: none !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main-text: #f4f4f4;
+        --main-bg: #242424cb;
+        --backdrop: #0000004e;
+        --highlight-bg:#ffffff15;
+        --selection-bg:#ffffff0e;
+        --primary-border-color: #ffffff5b;
+        --secondary-border-color: #ffffff41;
+    }
+    .light-mode {
+        display: none;
+    }
+    .dark-mode {
+        display: block !important;
+    }
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    color: var(--main-text);
+}
+
+*:focus-visible {
+    outline: #0a80ff71 4px solid;
+}
+
+.toggle_label {
+    width: 40px;
+    height: 24px;
+    background: #ccc;
+    position: relative;
+    display: inline-block;
+    border-radius: 40px;
+    box-sizing: border-box;
+}
+
+.toggle_label:after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    left: 2px;
+    top: 2px;
+    z-index: 2;
+    background: #fff;
+    transition: 0.1s;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.toggle_input:checked+.toggle_label {
+    background-color: #0068f0;
+}
+
+.toggle_input:focus-visible+.toggle_label {
+    outline: #0a80ff71 4px solid;
+}
+
+.toggle_input+.toggle_label:active {
+    filter: brightness(90%);
+}
+
+.toggle_input:checked+.toggle_label:after {
+    left: 18px;
+}
+
+.toggle_button {
+    position: relative;
+    width: 35px;
+    height: 25px;
+    margin: auto;
+}
+
+input[type=text],
+input[type=url] {
+    height: 24px;
+    padding: 6px;
+    font-size: 15px;
+    width: 100%;
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 0px 0px 0px 0.5px rgba(0, 0, 0, 0.05), 0px 0.5px 2.5px 0px rgba(0, 0, 0, 0.30);
+}
+
+ul {
+    list-style: none;
+}
+
+form {
+    width: 100%;
+}
+
+#searcher {
+    width: 600px;
+    position: absolute;
+    top: 100px;
+    left: calc(50% - 300px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 13px;
+    border: 1px solid var(--primary-border-color);
+    background: var(--main-bg);
+    box-shadow: 0px 1px 16.5px 0px #00000024, 0 20px 50px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(40px);
+}
+
+#search-bar {
+    width: 100%;
+    height: 52px;
+    display: flex;
+    align-items: center;
+}
+
+#search-bar img.left-icon {
+    width: 24px;
+    flex-shrink: 0;
+    box-sizing: content-box;
+    padding: 0 12px;
+    padding-right: 6px;
+    border-radius: 6px;
+}
+
+#search-bar img.right-icon {
+    width: 38px;
+    margin-right: 10px;
+}
+
+#search-bar .search-box {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+}
+
+#search-bar input {
+    width: 100%;
+    height: 100%;
+    font-size: 20px;
+    padding: 0px;
+    padding-right: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+    outline: none;
+}
+
+#search-bar ::placeholder {
+    color: var(--main-text);
+    opacity: 0.54;
+}
+
+#suggest ul {
+    border-top: 1px solid var(--secondary-border-color);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+#suggest button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 8px 28px;
+    border-radius: 10px;
+    font-size: 16px;
+    gap: 6px;
+    position: relative;
+}
+
+#suggest button img.icon {
+    width: 28px;
+    flex-shrink: 0;
+    margin-left: -20px;
+    box-sizing: content-box;
+}
+
+#suggest button img.icon.hide {
+    visibility: hidden;
+    height: 26px;
+    width: 20px;
+}
+
+#suggest button:hover {
+    background-color: var(--selection-bg);
+}
+
+#suggest button.selected {
+    background-color: #0078f0e8;
+    color: white;
+    outline: none;
+}
+
+#suggest ul span:empty {
+    display: none;
+}
+
+#suggest ul button p.title {
+    padding: 3px 5px;
+}
+
+#suggest ul button .caption {
+    font-size: 16px;
+    width: 32px;
+    opacity: 0.7;
+    position: absolute;
+    letter-spacing: -0.06rem;
+    right: 0;
+    font-family: "Roboto Mono", monospace;
+}
+
+#bottom-bar {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    padding: 6px;
+    gap: 14px;
+    border-top: 1px solid var(--secondary-border-color);
+}
+
+#bottom-bar .border {
+    width: 2px;
+    height: 16px;
+    background-color: #00000019;
+}
+
+#bottom-bar button.option {
+    font-size: 14px;
+    padding: 5px;
+}
+
+span.key {
+    padding: 4px;
+    background-color: var(--highlight-bg);
+    border-radius: 5px;
+    font-size: 13px;
+    opacity: 0.9;
+}
+
+background-img {
+    position: fixed;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    height: 100%;
+}
+
+background-img img[src=""] {
+    display: none;
+}
+
+background-img img {
+    object-fit: cover;
+}
+
+footer {
+    width: 100%;
+    height: 40px;
+    position: fixed;
+    bottom: 0;
+    z-index: -1;
+    color: white;
+    display: none;
+    align-items: end;
+    padding: 20px;
+}
+
+footer a {
+    align-items: center;
+    display: flex;
+    gap: 5px;
+    width: fit-content;
+}
+
+footer a p {
+    flex-shrink: 0
+}
+
+footer img {
+    height: 20px;
+}
+
+footer.inversion {
+    display: flex;
+}
+
+body>button.inversion {
+    color: white;
+}
+
+background-img.timechange progressive-blur,
+background-img.default progressive-blur {
+    display: none;
+}
+
+progressive-blur {
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(#00000000, #00000063);
+}
+
+progressive-blur div {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
