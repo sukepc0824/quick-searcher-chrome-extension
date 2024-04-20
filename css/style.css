@@ -3,7 +3,7 @@
 /*ライトモードの場合は、次の変数が適用される*/
 :root {
     --main-text: #0d0d0d;
-    --main-bg: #f3f3f3;
+    --main-bg: #f8f8f8;
     --backdrop: #f4f4f44e;
     --highlight-bg:#00000018;
     --selection-bg:#0000000e;
