@@ -3,7 +3,7 @@
 /*ライトモードの場合は、次の変数が適用される*/
 :root {
     --main-text: #0d0d0d;
-    --main-bg: #fefefed6;
+    --main-bg: #f1f1f1d6;
     --backdrop: #f4f4f44e;
     --highlight-bg:#00000018;
     --selection-bg:#0000000e;
@@ -128,8 +128,19 @@ form {
     border-radius: 13px;
     border: 1px solid var(--primary-border-color);
     background: var(--main-bg);
-    box-shadow: 0px 1px 16.5px 0px #00000024, 0 20px 50px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 1px 16.5px 0px #00000024, 0 20px 50px rgba(0, 0, 0, 0.18);
+    filter: blur(0px);
     backdrop-filter: blur(40px);
+    opacity: 1;
+    transform: scale(1);
+    transition: all .3s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#searcher.hide{
+    filter: blur(40px);
+    opacity: 0;
+    transform: scale(1.4);
+    transition: all .8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 #search-bar {
@@ -240,7 +251,7 @@ form {
     display: flex;
     align-items: center;
     justify-content: end;
-    padding: 6px;
+    padding: 2px;
     gap: 14px;
     border-top: 1px solid var(--secondary-border-color);
 }
@@ -251,9 +262,14 @@ form {
     background-color: #00000019;
 }
 
-#bottom-bar button.option {
+#bottom-bar .option {
     font-size: 14px;
-    padding: 5px;
+    padding: 6px 4px;
+}
+
+#bottom-bar button.option:hover {
+    background-color: #00000010;
+    border-radius: 5px;
 }
 
 span.key {
