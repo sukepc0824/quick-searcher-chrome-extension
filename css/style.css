@@ -127,19 +127,11 @@ form {
     align-items: center;
     border-radius: 13px;
     border: 1px solid var(--primary-border-color);
-    background: var(--main-bg);
+    background-color: var(--main-bg);
     box-shadow: 0px 1px 16.5px 0px #00000024, 0 20px 50px rgba(0, 0, 0, 0.18);
     backdrop-filter: blur(40px);
     opacity: 1;
     transform: scale(1);
-    transition: all .3s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-#searcher.hide{
-    filter: blur(40px);
-    opacity: 0;
-    transform: scale(1.4);
-    transition: all .8s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 #search-bar {
