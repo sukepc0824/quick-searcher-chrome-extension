@@ -22,7 +22,7 @@
 
 <body>
     <div class="snap" style="position: fixed; width: calc(50% - 300px); height: 100%; top:0; left:0;"></div>
-    <div id="searcher">
+    <div id="searcher" class="hide">
         <form name="search">
             <section id="search-bar">
                 <div class="search-box">
@@ -39,7 +39,7 @@
                         <ul data-class> 
                     <script class="suggest-item" type="text/html">
                                 <button data-value="value" type="button" data-template-bind='{"attribute": "onclick", "value": "onclick"}'>
-                                    <img data-src="icon" data-alt="icon" class="icon">
+                                    <img data-src="icon" data-alt="icon" class="icon" height="28" width="28">
                                     <p data-content="title" class="title"></p>
                                     <p data-content="caption" class="caption"></p>
                                 </button>
@@ -54,11 +54,11 @@
                     <span class="key">Enter ↩</span>
                 </button>
                 <div class="border"></div>
-                <button class="option">
+                <div class="option">
                     選択
                     <span class="key">↑</span>
                     <span class="key">↓</span>
-                </button>
+                </div>
             </section>
         </form>
     </div>
