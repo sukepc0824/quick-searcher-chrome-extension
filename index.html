@@ -4,72 +4,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QuickSearcher</title>
+    <title>Guide</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/destyle.css@1.0.15/destyle.css" />
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/background-dialog.css">
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="js/jquery.loadTemplate.min.js"></script>
+        body {
+            font-family: "Inter", sans-serif;
+            max-width: 600px;
+            margin: auto;
+            font-size: 18px;
+            background-color: white;
+            padding: 20px;
+        }
 
+        img.icon {
+            width: 150px;
+        }
 
+        img.screen {
+            width: 500px;
+        }
 
-    <script src="js/jquery-ui.min.js"></script>
+        h1 {
+            margin: 0;
+            font-size: 40px;
+        }
 
-    <script src="js/index.js"></script>
+        h2 {
+            margin: 0;
+            font-size: 26px;
+        }
+    </style>
 </head>
 
-<body class="quicksearcher">
-    <div class="snap" style="position: fixed; width: calc(50% - 300px); height: 100%; top:0; left:0;"></div>
-    <div id="searcher">
-        <form name="search">
-            <section id="search-bar">
-                <div class="search-box">
-                    <img src="img/icon/newtab.svg" alt="" class="left-icon light-mode tab">
-                    <img src="img/icon/search.svg" alt="" class="left-icon light-mode page">
-                    <input type="text" spellcheck="false" autocorrect="off" placeholder="ページに移動...">
-                    <img src="img/icon/google.svg" alt="" class="right-icon">
-                </div>
-            </section>
-            <section id="output">
-                <section id="suggest">
-                    <script class="suggest-box" type="text/html">
-                        <ul data-class> 
-                    <script class="suggest-item" type="text/html">
-                                <button data-value="value" type="button" data-template-bind='{"attribute": "onclick", "value": "onclick"}'>
-                                    <img data-src="icon" data-alt="icon" class="icon" height="28" width="28">
-                                    <p data-content="title" class="title"></p>
-                                    <p data-content="caption" class="caption"></p>
-                                </button>
-                            </script>
-                    </ul>
-                    </script>
-                </section>
-            </section>
-            <section id="bottom-bar">
-                <button class="option tab-page">
-                    <span class="tab-page-context">新しいタブで開く</span>
-                    <span class="key">Enter ↩</span>
-                </button>
-                <div class="option page">
-                    移動
-                    <span class="key">Enter ↩</span>
-                </div>
-                <div class="option tab">
-                    開く
-                    <span class="key">Enter ↩</span>
-                </div>
-                <div class="border"></div>
-                <div class="option">
-                    選択
-                    <span class="key">↑</span>
-                    <span class="key">↓</span>
-                </div>
-                <a href="help.html" style="font-size: 14px; opacity: 0.6; margin-right: 14px;">ヘルプ...</a>
-            </section>
-        </form>
+<body>
+    <div style="display: flex; align-items: center; margin: 40px 0;">
+        <img src="img/Searcher_logo/quicksearcher.png" alt="icon" class="icon">
+        <div>
+            <h1>QuickSearcher</h1>
+            <h2>ヘルプ</h2>
+        </div>
     </div>
+    <p>QuickSearcher（Chrome拡張機能）は、どこからでもコマンドバーを起動して直接検索してページに移動・ページを開くことのできるツールです。
+        新しいタブを開いたり、ページに移動して検索する手間を省くことができます。
+    </p>
+    <h2>起動方法</h2>
+    <p>下記いずれの方法でも起動できます。</p>
+    <ul>
+        <li>[Ctrl]+[Shift]+[K]（macOSの場合は[Command]）</li>
+        <li>[Ctrl]を押しながらダブルクリック（macOSの場合は[Command]）</li>
+        <li>アドレスバーのアイコンをクリック（ピン留めすると便利）</li>
+    </ul>
+    <img src="img/screen.png" alt="" class="screen">
+    <h2>操作方法</h2>
+    <p>矢印キー（カーソルキー）を使うと作業がキーボードで完結します。</p>
+    <p>[↑][↓]で操作、[Enter]（macOSの場合は[Return]）でページに移動するか新しいタブとして開くかを切り替えることができます。</p>
+    <h2>コマンド</h2>
+    <p>「/」から始まるコマンドを先頭に入力すると、検索エンジンを指定して検索することができます。空の状態で確定するとトップページに移動します。</p>
+    <ul>
+        <li>/y （Youtube）サジェストに対応します</li>
+        <li>/w （Wikipedia）サジェストに対応します</li>
+        <li>/x （X）</li>
+        <li>/f （Facebook）</li>
+    </ul>
+    <h2>製作者</h2>
+    <button onclick="window.open('https:x.com/pcsuke')">スケ @pcsuke(X)</button>
+    <p>バグはDMかsukepc0824「@」gmail.com（「」は外してください）まで報告いただけると幸いです。</p>
 </body>
 
 </html>
