@@ -134,21 +134,36 @@ $(function () {
         }
     }
 
-    tabPageWay = "tab"
-    function tabPageToggle() {
+    if (!localStorage.hasOwnProperty("tabpage-way")) {
+        localStorage.setItem("tabpage-way", "tab")
+    }
+
+    tabPageWay = localStorage.getItem("tabpage-way");
+    function tabPageSet() {
         if (tabPageWay === "page") {
-            tabPageWay = "tab"
+            localStorage.setItem("tabpage-way", tabPageWay)
             $("#search-bar input").attr("placeholder", "新しいタブで開く...")
             $("#bottom-bar button.tab-page span.tab-page-context").text("ページに移動")
             $("#search-bar img.tab").show()
             $("#search-bar img.page").hide()
         } else {
             if (tabPageWay === "tab") {
-                tabPageWay = "page"
+                localStorage.setItem("tabpage-way", tabPageWay)
                 $("#search-bar input").attr("placeholder", "ページに移動...")
                 $("#bottom-bar button.tab-page span.tab-page-context").text("新しいタブで開く")
                 $("#search-bar img.tab").hide()
                 $("#search-bar img.page").show()
+            }
+        }
+    }
+    function tabPageToggle() {
+        if (tabPageWay === "page") {
+            tabPageWay = "tab"
+            tabPageSet()
+        } else {
+            if (tabPageWay === "tab") {
+                tabPageWay = "page"
+                tabPageSet()
             }
         }
     }
@@ -181,7 +196,7 @@ $(function () {
                 if (tabPageWay === "page") {
                     $("#bottom-bar .page").show()
                 } else {
-                    if(tabPageWay==="tab"){
+                    if (tabPageWay === "tab") {
                         $("#bottom-bar .tab").show()
                     }
                 }
@@ -305,5 +320,5 @@ $(function () {
     new SearchBox().create()
     new Suggest().create()
     $("#searcher").draggable()
-    tabPageToggle()
+    tabPageSet()
 })
