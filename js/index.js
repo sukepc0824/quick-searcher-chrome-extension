@@ -28,7 +28,7 @@ $(function () {
             url: {
                 suggest: "https://ja.wikipedia.org/w/api.php?action=opensearch&format=json&search=",
                 search: "https://ja.wikipedia.org/w/index.php?search=",
-                home: "https://www.ja.wikipedia.org"
+                home: "https://ja.wikipedia.org"
             },
         },
         {
