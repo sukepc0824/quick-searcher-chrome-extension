@@ -74,7 +74,7 @@ $(function () {
                 }
                 if (new SearchBox().value.length) {
                     if (tabPageWay === "page") {
-                        window.location.href = new Suggest().selectingEngineData.url.search + new SearchBox().value
+                        window.top.location.href = new Suggest().selectingEngineData.url.search + new SearchBox().value
                     } else {
                         if (tabPageWay === "tab") {
                             window.open(new Suggest().selectingEngineData.url.search + new SearchBox().value)
