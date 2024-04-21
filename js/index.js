@@ -68,7 +68,7 @@ $(function () {
                         window.top.location.href = new Suggest().selectingEngineData.url.home
                     } else {
                         if (tabPageWay === "tab") {
-                            window.top.open(new Suggest().selectingEngineData.url.home)
+                            window.open(new Suggest().selectingEngineData.url.home)
                         }
                     }
                 }
@@ -141,28 +141,28 @@ $(function () {
     tabPageWay = localStorage.getItem("tabpage-way");
     function tabPageSet() {
         if (tabPageWay === "page") {
-            localStorage.setItem("tabpage-way", tabPageWay)
-            $("#search-bar input").attr("placeholder", "新しいタブで開く...")
-            $("#bottom-bar button.tab-page span.tab-page-context").text("ページに移動")
-            $("#search-bar img.tab").show()
-            $("#search-bar img.page").hide()
+            $("#search-bar input").attr("placeholder", "ページに移動...")
+            $("#bottom-bar button.tab-page span.tab-page-context").text("新しいタブで開く")
+            $("#search-bar img.tab").hide()
+            $("#search-bar img.page").show()
         } else {
             if (tabPageWay === "tab") {
-                localStorage.setItem("tabpage-way", tabPageWay)
-                $("#search-bar input").attr("placeholder", "ページに移動...")
-                $("#bottom-bar button.tab-page span.tab-page-context").text("新しいタブで開く")
-                $("#search-bar img.tab").hide()
-                $("#search-bar img.page").show()
+                $("#search-bar input").attr("placeholder", "新しいタブで開く...")
+                $("#bottom-bar button.tab-page span.tab-page-context").text("ページに移動")
+                $("#search-bar img.tab").show()
+                $("#search-bar img.page").hide()
             }
         }
     }
     function tabPageToggle() {
         if (tabPageWay === "page") {
             tabPageWay = "tab"
+            localStorage.setItem("tabpage-way", "tab")
             tabPageSet()
         } else {
             if (tabPageWay === "tab") {
                 tabPageWay = "page"
+                localStorage.setItem("tabpage-way", "page")
                 tabPageSet()
             }
         }
