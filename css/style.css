@@ -11,25 +11,18 @@
     --secondary-border-color: #00000020;
 }
 
-.dark-mode {
-    display: none !important;
-}
-
 @media (prefers-color-scheme: dark) {
     :root {
         --main-text: #f4f4f4;
-        --main-bg: #343434;
+        --main-bg: #474747;
         --backdrop: #0000004e;
-        --highlight-bg:#ffffff15;
+        --highlight-bg:#ffffff1d;
         --selection-bg:#ffffff0e;
         --primary-border-color: #ffffff5b;
         --secondary-border-color: #ffffff41;
     }
     .light-mode {
-        display: none !important;
-    }
-    .dark-mode {
-        display: block !important;
+        filter: brightness(200%);
     }
 }
 
@@ -213,7 +206,7 @@ form {
 }
 
 #suggest button.selected {
-    background-color: #0078f0e8;
+    background-color: #008bf6e8;
     color: white;
     outline: none;
 }
@@ -247,8 +240,9 @@ form {
 
 #bottom-bar .border {
     width: 2px;
+    border-radius: 10px;
     height: 16px;
-    background-color: #00000019;
+    background-color: var(--primary-border-color);
 }
 
 #bottom-bar .option {
@@ -257,7 +251,7 @@ form {
 }
 
 #bottom-bar button.option:hover {
-    background-color: #00000010;
+    background-color: var(--highlight-bg);
     border-radius: 5px;
 }
 
@@ -267,81 +261,4 @@ span.key {
     border-radius: 5px;
     font-size: 13px;
     opacity: 0.9;
-}
-
-background-img {
-    position: fixed;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 50%;
-    height: 100%;
-}
-
-background-img img[src=""] {
-    display: none;
-}
-
-background-img img {
-    object-fit: cover;
-}
-
-footer {
-    width: 100%;
-    height: 40px;
-    position: fixed;
-    bottom: 0;
-    z-index: -1;
-    color: white;
-    display: none;
-    align-items: end;
-    padding: 20px;
-}
-
-footer a {
-    align-items: center;
-    display: flex;
-    gap: 5px;
-    width: fit-content;
-}
-
-footer a p {
-    flex-shrink: 0
-}
-
-footer img {
-    height: 20px;
-}
-
-footer.inversion {
-    display: flex;
-}
-
-body>button.inversion {
-    color: white;
-}
-
-background-img.timechange progressive-blur,
-background-img.default progressive-blur {
-    display: none;
-}
-
-progressive-blur {
-    position: fixed;
-    width: 100%;
-    height: 100px;
-    bottom: 0;
-    display: flex;
-    flex-direction: column;
-    background: linear-gradient(#00000000, #00000063);
-}
-
-progressive-blur div {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
 }
