@@ -177,7 +177,7 @@ $(function () {
             })
         } else {
             $("#suggest ul").loadTemplate($(".suggest-item"), {
-                value: value, icon: icon, title: title, caption: caption, onclick: "window.top.location.href = '" + new Suggest().selectingEngineData.url.search + title
+                value: value, icon: icon, title: title, caption: caption, onclick: "window.top.location.href = '" + new Suggest().selectingEngineData.url.search + title + "'"
             }, {
                 append: true,
             })
