@@ -169,12 +169,19 @@ $(function () {
     }
 
     function suggestAppend(value, icon, title, caption) {
-
-        $("#suggest ul").loadTemplate($(".suggest-item"), {
-            value: value, icon: icon, title: title, caption: caption, onclick: "window.open('" + new Suggest().selectingEngineData.url.search + title + "')"
-        }, {
-            append: true,
-        })
+        if (tabPageWay === "tab") {
+            $("#suggest ul").loadTemplate($(".suggest-item"), {
+                value: value, icon: icon, title: title, caption: caption, onclick: "window.open('" + new Suggest().selectingEngineData.url.search + title + "')"
+            }, {
+                append: true,
+            })
+        } else {
+            $("#suggest ul").loadTemplate($(".suggest-item"), {
+                value: value, icon: icon, title: title, caption: caption, onclick: "window.top.location.href = '" + new Suggest().selectingEngineData.url.search + title
+            }, {
+                append: true,
+            })
+        }
         if ($("#suggest ul").hasClass("command")) {
             $("#suggest ul button").removeAttr("onclick")
         }
@@ -321,8 +328,8 @@ $(function () {
     new Suggest().create()
     $("#searcher").draggable()
     tabPageSet()
-    
-    $("#searcher").on("mousedown",function(){
+
+    $("#searcher").on("mousedown", function () {
         $('#searcher input').focus()
     })
 })
