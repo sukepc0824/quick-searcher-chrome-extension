@@ -171,7 +171,7 @@ $(function () {
     function suggestAppend(value, icon, title, caption) {
 
         $("#suggest ul").loadTemplate($(".suggest-item"), {
-            value: value, icon: icon, title: title, caption: caption, onclick: "window.top.open('" + new Suggest().selectingEngineData.url.search + title + "')"
+            value: value, icon: icon, title: title, caption: caption, onclick: "window.open('" + new Suggest().selectingEngineData.url.search + title + "')"
         }, {
             append: true,
         })
@@ -321,4 +321,8 @@ $(function () {
     new Suggest().create()
     $("#searcher").draggable()
     tabPageSet()
+    
+    $("#searcher").on("mousedown",function(){
+        $('#searcher input').focus()
+    })
 })
