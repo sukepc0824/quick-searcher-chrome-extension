@@ -22,7 +22,7 @@
         --secondary-border-color: #ffffff41;
     }
     .light-mode {
-        filter: brightness(200%);
+        filter: brightness(740%);
     }
 }
 
@@ -38,6 +38,7 @@ body {
     left: 0;
     z-index: -1;
     color: var(--main-text);
+    background: transparent;
 }
 
 *:focus-visible {
@@ -139,6 +140,7 @@ form {
     box-sizing: content-box;
     padding: 0 12px;
     padding-right: 6px;
+    opacity: 0.8;
     border-radius: 6px;
 }
 
