@@ -123,7 +123,7 @@ form {
     border: 1px solid var(--primary-border-color);
     background-color: var(--main-bg);
     backdrop-filter: blur(30px);
-    box-shadow: 0px 1px 16.5px 0px #00000024, 0 20px 50px rgba(0, 0, 0, 0.18);
+    box-shadow: 0px 20px 40px -12px #00000056, 0 0px 50px rgba(0, 0, 0, 0.169);
     opacity: 1;
 }
 
