@@ -3,7 +3,7 @@
 /*ライトモードの場合は、次の変数が適用される*/
 :root {
     --main-text: #0d0d0d;
-    --main-bg: #f8f8f8ce;
+    --main-bg: #f8f8f8dd;
     --backdrop: #f4f4f44e;
     --highlight-bg:#00000018;
     --selection-bg:#0000000e;
@@ -14,7 +14,7 @@
 @media (prefers-color-scheme: dark) {
     :root {
         --main-text: #f4f4f4;
-        --main-bg: #373737c9;
+        --main-bg: #373737d2;
         --backdrop: #0000004e;
         --highlight-bg:#ffffff1d;
         --selection-bg:#ffffff0e;
