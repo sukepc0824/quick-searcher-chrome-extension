@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -12,8 +12,8 @@
             font-family: "Inter", sans-serif;
             max-width: 600px;
             margin: auto;
-                  background-color: white;
             font-size: 18px;
+            background-color: white;
             padding: 20px;
         }
 
@@ -32,22 +32,29 @@
 
         h2 {
             margin: 0;
+            margin-top: 30px;
             font-size: 26px;
+        }
+
+        p {
+            margin: 0;
         }
     </style>
 </head>
 
 <body>
-    <div style="display: flex; align-items: center; margin: 40px 0;">
+    <div style="display: flex; justify-content: center; align-items: center; margin: 40px 0; background: #f3f3f3; border-radius: 15px;">
         <img src="img/Searcher_logo/quicksearcher.png" alt="icon" class="icon">
         <div>
             <h1>QuickSearcher</h1>
-            <h2>ヘルプ</h2>
         </div>
     </div>
+    <h2>「ページへひとっ飛び。」</h2>
     <p>QuickSearcher（Chrome拡張機能）は、どこからでもコマンドバーを起動して直接検索してページに移動・ページを開くことのできるツールです。
         新しいタブを開いたり、ページに移動して検索する手間を省くことができます。
     </p>
+    <h2>注意</h2>
+    <p>Chrome(124)以外のブラウザではテストしていません。動作が不安定になる場合があります。</p>
     <h2>起動方法</h2>
     <p>下記いずれの方法でも起動できます。</p>
     <ul>
@@ -58,7 +65,7 @@
     <img src="img/screen.png" alt="" class="screen">
     <h2>操作方法</h2>
     <p>矢印キー（カーソルキー）を使うと作業がキーボードで完結します。</p>
-    <p>[↑][↓]で操作、[Enter]（macOSの場合は[Return]）でページに移動するか新しいタブとして開くかを切り替えることができます。</p>
+    <p>[↑][↓]で操作、[Enter]（macOSの場合は[Return]）でページに移動するか新しいタブとして開くかを切り替えることができます。[Esc]で終了。</p>
     <h2>コマンド</h2>
     <p>「/」から始まるコマンドを先頭に入力すると、検索エンジンを指定して検索することができます。空の状態で確定するとトップページに移動します。</p>
     <ul>
@@ -68,7 +75,7 @@
         <li>/f （Facebook）</li>
     </ul>
     <h2>製作者</h2>
-    <a href="https:x.com/pcsuke">スケ @pcsuke(X)</a>
+    <button onclick="window.open('https:x.com/pcsuke')">スケ @pcsuke(X)</button>
     <p>バグはDMかsukepc0824「@」gmail.com（「」は外してください）まで報告いただけると幸いです。</p>
 </body>
 
