@@ -214,6 +214,10 @@ form {
     outline: none;
 }
 
+::selection {
+    background-color: #008bf64b;
+  }
+
 #suggest ul span:empty {
     display: none;
 }
