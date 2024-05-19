@@ -12,11 +12,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="js/jquery.loadTemplate.min.js"></script>
-
-
-
     <script src="js/jquery-ui.min.js"></script>
-
     <script src="js/index.js"></script>
 </head>
 
@@ -28,7 +24,8 @@
                 <div class="search-box">
                     <img src="img/icon/newtab.svg" alt="" class="left-icon light-mode tab">
                     <img src="img/icon/search.svg" alt="" class="left-icon light-mode page">
-                    <input type="text" spellcheck="false" autocorrect="off" placeholder="ページに移動...">
+                    <input type="text" spellcheck="false" autocorrect="off" placeholder="ページに移動" class="lang-ja">
+                    <input type="text" spellcheck="false" autocorrect="off" placeholder="Go to page" class="lang-en">
                     <img src="img/icon/google.svg" alt="" class="right-icon">
                 </div>
             </section>
@@ -49,16 +46,20 @@
             </section>
             <section id="bottom-bar">
                 <button class="option tab-page">
-                    <span class="tab-page-context">新しいタブで開く</span>
-                    <span class="key">Enter ↩</span>
+                    <span class="tab-page-context lang-ja">新しいタブで開く</span>
+                    <span class="tab-page-context lang-en">New Tab</span>
+                    <span class="key macos">Return ↩</span>
+                    <span class="key windows">Enter ↩</span>
                 </button>
                 <div class="option page">
                     移動
-                    <span class="key">Enter ↩</span>
+                    <span class="key macos">Return ↩</span>
+                    <span class="key windows">Enter ↩</span>
                 </div>
                 <div class="option tab">
                     開く
-                    <span class="key">Enter ↩</span>
+                    <span class="key macos">Return ↩</span>
+                    <span class="key windows">Enter ↩</span>
                 </div>
                 <div class="border"></div>
                 <div class="option">
@@ -66,10 +67,12 @@
                     <span class="key">↑</span>
                     <span class="key">↓</span>
                 </div>
-                <button onclick="window.open('help.html')" style="font-size: 14px; opacity: 0.6; margin-right: 14px;">ヘルプ...</button>
+                <button onclick="window.open('help.html')" style="font-size: 14px; opacity: 0.6; margin-right: 14px;">
+                    <span class="lang-jp">ヘルプ...</span>
+                    <span class="lang-en">Help...</span>
+                </button>
             </section>
         </form>
     </div>
 </body>
-
 </html>
