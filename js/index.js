@@ -142,7 +142,7 @@ $(function () {
     function tabPageSet() {
         if (tabPageWay === "page") {
 
-            if (window.navigator.language === "ja") {
+            if (window.top.navigator.language === "ja") {
                 $("#search-bar input").attr("placeholder", "ページに移動")
                 $("#bottom-bar button.tab-page span.tab-page-context").text("新しいタブで開く")
             } else {
@@ -155,7 +155,7 @@ $(function () {
         } else {
             if (tabPageWay === "tab") {
 
-            if (window.navigator.language === "ja") {
+            if (window.top.navigator.language === "ja") {
                 $("#search-bar input").attr("placeholder", "新しいタブで開く")
                 $("#bottom-bar button.tab-page span.tab-page-context").text("ページに移動")
             } else {
@@ -235,7 +235,7 @@ $(function () {
                 $("#suggest").loadTemplate($(".suggest-box"), "command", {
                     append: true
                 })
-                if (window.navigator.language === "ja") {
+                if (window.top.navigator.language === "ja") {
                     suggestAppend("/y ", "img/icon/youtube.svg", "Youtubeで検索", "/y")
                     suggestAppend("/w ", "img/icon/wikipedia.svg", "Wikipediaで検索", "/w")
                     suggestAppend("/x ", "img/icon/twitter.svg", "Xで検索", "/x")
@@ -353,7 +353,7 @@ $(function () {
         $('#searcher input').focus()
     })
 
-    if (window.navigator.language === "ja") {
+    if (window.top.navigator.language === "ja") {
         $("body").removeClass("en")
         $("body").addClass("ja")
     } else {
@@ -361,7 +361,7 @@ $(function () {
         $("body").addClass("en")
     }
 
-    if (window.navigator.userAgent.toLowerCase().indexOf("mac os x") !== -1) {
+    if (window.top.navigator.userAgent.toLowerCase().indexOf("mac os x") !== -1) {
         $("body").removeClass("windows")
         $("body").addClass("macos")
     } else {
