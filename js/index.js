@@ -141,14 +141,28 @@ $(function () {
     tabPageWay = localStorage.getItem("tabpage-way");
     function tabPageSet() {
         if (tabPageWay === "page") {
-            $("#search-bar input").attr("placeholder", "ページに移動...")
-            $("#bottom-bar button.tab-page span.tab-page-context").text("新しいタブで開く")
+
+            if (window.navigator.language === "ja") {
+                $("#search-bar input").attr("placeholder", "ページに移動")
+                $("#bottom-bar button.tab-page span.tab-page-context").text("新しいタブで開く")
+            } else {
+                $("#search-bar input").attr("placeholder", "Go to page")
+                $("#bottom-bar button.tab-page span.tab-page-context").text("Open in new tab")
+            }
+
             $("#search-bar img.tab").hide()
             $("#search-bar img.page").show()
         } else {
             if (tabPageWay === "tab") {
-                $("#search-bar input").attr("placeholder", "新しいタブで開く...")
+
+            if (window.navigator.language === "ja") {
+                $("#search-bar input").attr("placeholder", "新しいタブで開く")
                 $("#bottom-bar button.tab-page span.tab-page-context").text("ページに移動")
+            } else {
+                $("#search-bar input").attr("placeholder", "Open in new tab")
+                $("#bottom-bar button.tab-page span.tab-page-context").text("Go to page")
+            }
+
                 $("#search-bar img.tab").show()
                 $("#search-bar img.page").hide()
             }
@@ -221,10 +235,17 @@ $(function () {
                 $("#suggest").loadTemplate($(".suggest-box"), "command", {
                     append: true
                 })
-                suggestAppend("/y ", "img/icon/youtube.svg", "Youtubeで検索", "/y")
-                suggestAppend("/w ", "img/icon/wikipedia.svg", "Wikipediaで検索", "/w")
-                suggestAppend("/x ", "img/icon/twitter.svg", "Xで検索", "/x")
-                suggestAppend("/f ", "img/icon/facebook.svg", "Facebookで検索", "/f")
+                if (window.navigator.language === "ja") {
+                    suggestAppend("/y ", "img/icon/youtube.svg", "Youtubeで検索", "/y")
+                    suggestAppend("/w ", "img/icon/wikipedia.svg", "Wikipediaで検索", "/w")
+                    suggestAppend("/x ", "img/icon/twitter.svg", "Xで検索", "/x")
+                    suggestAppend("/f ", "img/icon/facebook.svg", "Facebookで検索", "/f")
+                } else {
+                    suggestAppend("/y ", "img/icon/youtube.svg", "Search Youtube", "/y")
+                    suggestAppend("/w ", "img/icon/wikipedia.svg", "Search Wikipedia", "/w")
+                    suggestAppend("/x ", "img/icon/twitter.svg", "Search X", "/x")
+                    suggestAppend("/f ", "img/icon/facebook.svg", "Search Facebook", "/f")
+                }
 
                 $("#suggest ul button").on("click", function () {
                     new Suggest($("#suggest ul button").index(this)).select()
@@ -323,7 +344,6 @@ $(function () {
             $("#search-bar input")[0].setSelectionRange(realValue.length, realValue.length)
         }
     }
-
     new SearchBox().create()
     new Suggest().create()
     $("#searcher").draggable()
@@ -332,4 +352,21 @@ $(function () {
     $("#searcher").on("mousedown", function () {
         $('#searcher input').focus()
     })
+
+    if (window.navigator.language === "ja") {
+        $("body").removeClass("en")
+        $("body").addClass("ja")
+    } else {
+        $("body").removeClass("ja")
+        $("body").addClass("en")
+    }
+
+    if (window.navigator.userAgent.toLowerCase().indexOf("mac os x") !== -1) {
+        $("body").removeClass("windows")
+        $("body").addClass("macos")
+    } else {
+        $("body").removeClass("macos")
+        $("body").addClass("windows")
+    }
+
 })
