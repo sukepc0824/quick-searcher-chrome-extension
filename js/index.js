@@ -356,9 +356,11 @@ $(function () {
     if (window.top.navigator.language === "ja") {
         $("body").removeClass("en")
         $("body").addClass("ja")
+        console.log(window.top.navigator.language)
     } else {
         $("body").removeClass("ja")
         $("body").addClass("en")
+        console.log(window.top.navigator.language)
     }
 
     if (window.top.navigator.userAgent.toLowerCase().indexOf("mac os x") !== -1) {
