@@ -354,21 +354,15 @@ $(function () {
     })
 
     if (window.navigator.language === "ja") {
-        $("body").removeClass("en")
-        $("body").addClass("ja")
-        console.log(window.navigator.language)
+        $("body.en .lang-en").remove()
     } else {
-        $("body").removeClass("ja")
-        $("body").addClass("en")
-        console.log(window.navigator.language)
+        $("body.ja .lang-jp").remove()
     }
 
     if (window.navigator.userAgent.toLowerCase().indexOf("mac os x") !== -1) {
-        $("body").removeClass("windows")
-        $("body").addClass("macos")
+        $("body.windows .windows").remove()
     } else {
-        $("body").removeClass("macos")
-        $("body").addClass("windows")
+        $("body.macos .macos").remove()
     }
 
 })
