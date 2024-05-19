@@ -37,7 +37,7 @@ $(function () {
             command: "/x ",
             url: {
                 suggest: "",
-                search: "https://ja.wikipedia.org/w/index.php?search=",
+                search: "https://x.com/search?q=",
                 home: "https://www.x.com"
             },
         }, {
