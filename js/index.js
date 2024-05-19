@@ -353,16 +353,16 @@ $(function () {
         $('#searcher input').focus()
     })
 
-    if (window.navigator.language === "ja") {
-        $(".lang-en").remove()
+    if (window.navigator.language.includes("ja")) {
+        $("body.en .lang-en").remove()
     } else {
-        $(".lang-jp").remove()
+        $("body.ja .lang-jp").remove()
     }
 
     if (window.navigator.userAgent.toLowerCase().indexOf("mac os x") !== -1) {
-        $(".windows").remove()
+        $("body.windows .windows").remove()
     } else {
-        $(".macos").remove()
+        $("body.macos .macos").remove()
     }
 
 })
