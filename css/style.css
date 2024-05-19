@@ -5,8 +5,8 @@
     --main-text: #0d0d0d;
     --main-bg: #f8f8f8dd;
     --backdrop: #f4f4f44e;
-    --highlight-bg:#00000018;
-    --selection-bg:#0000000e;
+    --highlight-bg: #00000018;
+    --selection-bg: #0000000e;
     --primary-border-color: #00000033;
     --secondary-border-color: #00000020;
 }
@@ -16,11 +16,12 @@
         --main-text: #f4f4f4;
         --main-bg: #373737d2;
         --backdrop: #0000004e;
-        --highlight-bg:#ffffff1d;
-        --selection-bg:#ffffff0e;
+        --highlight-bg: #ffffff1d;
+        --selection-bg: #ffffff0e;
         --primary-border-color: #ffffff5b;
         --secondary-border-color: #ffffff41;
     }
+
     .light-mode {
         filter: brightness(740%);
     }
@@ -216,7 +217,7 @@ form {
 
 ::selection {
     background-color: #008bf64b;
-  }
+}
 
 #suggest ul span:empty {
     display: none;
@@ -268,4 +269,37 @@ span.key {
     border-radius: 5px;
     font-size: 13px;
     opacity: 0.9;
+}
+
+body.ja .lang-jp {
+    display: initial;
+}
+
+body.ja .lang-en {
+    display: none;
+}
+
+body.en .lang-jp {
+    display: none;
+}
+
+body.en .lang-en {
+    display: initial;
+}
+
+
+body.macos .macos {
+    display: initial;
+}
+
+body.macos .windows {
+    display: none;
+}
+
+body.windows .macos {
+    display: none;
+}
+
+body.windows .windows {
+    display: initial;
 }
