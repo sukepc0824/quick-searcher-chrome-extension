@@ -354,15 +354,15 @@ $(function () {
     })
 
     if (window.navigator.language.includes("ja")) {
-        $("body.en .lang-en").remove()
+        $(".lang-en").remove()
     } else {
-        $("body.ja .lang-jp").remove()
+        $(".lang-jp").remove()
     }
 
     if (window.navigator.userAgent.toLowerCase().indexOf("mac os x") !== -1) {
-        $("body.windows .windows").remove()
+        $(".windows").remove()
     } else {
-        $("body.macos .macos").remove()
+        $(".macos").remove()
     }
 
 })
