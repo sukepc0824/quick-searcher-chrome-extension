@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Fragment+Mono&family=Inter:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap');
 /*ライトモードの場合は、次の変数が適用される*/
 :root {
     --main-text: #0d0d0d;
     --main-bg: #f8f8f8dd;
     --backdrop: #f4f4f44e;
-    --highlight-bg: #00000018;
-    --selection-bg: #0000000e;
+    --highlight-bg: #0000000f;
+    --selection-bg: #0000000a;
+    --main-selection-bg:#00000018;
     --primary-border-color: #00000033;
     --secondary-border-color: #00000020;
 }
@@ -16,8 +16,9 @@
         --main-text: #f4f4f4;
         --main-bg: #373737d2;
         --backdrop: #0000004e;
-        --highlight-bg: #ffffff1d;
+        --highlight-bg: #ffffff12;
         --selection-bg: #ffffff0e;
+        --main-selection-bg:#ffffff19;
         --primary-border-color: #ffffff5b;
         --secondary-border-color: #ffffff41;
     }
@@ -28,7 +29,7 @@
 }
 
 body {
-    font-family: "Inter", sans-serif;
+    font-family: "Inter", "Noto Sans JP",sans-serif;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,64 +45,6 @@ body {
 
 *:focus-visible {
     outline: #0a80ff71 4px solid;
-}
-
-.toggle_label {
-    width: 40px;
-    height: 24px;
-    background: #ccc;
-    position: relative;
-    display: inline-block;
-    border-radius: 40px;
-    box-sizing: border-box;
-}
-
-.toggle_label:after {
-    content: "";
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 100%;
-    left: 2px;
-    top: 2px;
-    z-index: 2;
-    background: #fff;
-    transition: 0.1s;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-}
-
-.toggle_input:checked+.toggle_label {
-    background-color: #0068f0;
-}
-
-.toggle_input:focus-visible+.toggle_label {
-    outline: #0a80ff71 4px solid;
-}
-
-.toggle_input+.toggle_label:active {
-    filter: brightness(90%);
-}
-
-.toggle_input:checked+.toggle_label:after {
-    left: 18px;
-}
-
-.toggle_button {
-    position: relative;
-    width: 35px;
-    height: 25px;
-    margin: auto;
-}
-
-input[type=text],
-input[type=url] {
-    height: 24px;
-    padding: 6px;
-    font-size: 15px;
-    width: 100%;
-    border-radius: 5px;
-    background: #FFF;
-    box-shadow: 0px 0px 0px 0.5px rgba(0, 0, 0, 0.05), 0px 0.5px 2.5px 0px rgba(0, 0, 0, 0.30);
 }
 
 ul {
@@ -159,7 +102,7 @@ form {
 
 #search-bar input {
     width: 100%;
-    height: 100%;
+    height: 34px;
     font-size: 20px;
     padding: 0px;
     padding-right: 0;
@@ -210,13 +153,13 @@ form {
 }
 
 #suggest button.selected {
-    background-color: #008bf6e8;
-    color: white;
+    background: var(--main-selection-bg);
     outline: none;
+    transition: none;
 }
 
 ::selection {
-    background-color: #008bf64b;
+    background-color: var(--main-selection-bg);
 }
 
 #suggest ul span:empty {
@@ -234,7 +177,7 @@ form {
     position: absolute;
     letter-spacing: -0.06rem;
     right: 0;
-    font-family: "Roboto Mono", monospace;
+    font-family: "Fragment Mono", monospace;
 }
 
 #bottom-bar {
