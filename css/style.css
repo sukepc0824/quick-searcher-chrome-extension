@@ -4,7 +4,7 @@
     --main-text: #0d0d0d;
     --main-bg: #f8f8f8dd;
     --backdrop: #f4f4f44e;
-    --highlight-bg: #0000000f;
+    --highlight-bg: #00000018;
     --selection-bg: #0000000a;
     --main-selection-bg:#00000018;
     --primary-border-color: #00000033;
@@ -16,7 +16,7 @@
         --main-text: #f4f4f4;
         --main-bg: #373737d2;
         --backdrop: #0000004e;
-        --highlight-bg: #ffffff12;
+        --highlight-bg: #ffffff18;
         --selection-bg: #ffffff0e;
         --main-selection-bg:#ffffff19;
         --primary-border-color: #ffffff5b;
@@ -63,7 +63,7 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border-radius: 13px;
+    border-radius: 16px;
     border: 1px solid var(--primary-border-color);
     background-color: var(--main-bg);
     backdrop-filter: blur(30px);
@@ -129,7 +129,7 @@ form {
     display: flex;
     align-items: center;
     padding: 8px 28px;
-    border-radius: 10px;
+    border-radius: 6px;
     font-size: 16px;
     gap: 6px;
     position: relative;
@@ -185,7 +185,7 @@ form {
     align-items: center;
     justify-content: end;
     padding: 2px;
-    gap: 14px;
+    gap: 4px;
     border-top: 1px solid var(--secondary-border-color);
 }
 
@@ -198,7 +198,7 @@ form {
 
 #bottom-bar .option {
     font-size: 14px;
-    padding: 6px 4px;
+    padding: 6px 10px;
 }
 
 #bottom-bar button.option:hover {
