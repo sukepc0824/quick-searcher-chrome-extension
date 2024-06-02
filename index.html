@@ -14,68 +14,72 @@
     <script src="js/jquery.loadTemplate.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/progressive-blur.js"></script>
 </head>
 
 <body class="quicksearcher">
     <div class="snap" style="position: fixed; width: calc(50% - 300px); height: 100%; top:0; left:0;"></div>
-    <div id="searcher" class="hide">
-        <form name="search">
-            <section id="search-bar">
-                <div class="search-box">
-                    <img src="img/icon/newtab.svg" alt="" class="left-icon light-mode tab">
-                    <img src="img/icon/search.svg" alt="" class="left-icon light-mode page">
-                    <input type="text" spellcheck="false" autocorrect="off" placeholder="ページに移動" class="lang-jp">
-                    <input type="text" spellcheck="false" autocorrect="off" placeholder="Go to page" class="lang-en">
-                    <img src="img/icon/google.svg" alt="" class="right-icon">
-                </div>
-            </section>
-            <section id="output">
-                <section id="suggest">
-                    <script class="suggest-box" type="text/html">
-                        <ul data-class> 
-                    <script class="suggest-item" type="text/html">
-                                <button data-value="value" type="button" data-template-bind='{"attribute": "onclick", "value": "onclick"}'>
-                                    <img data-src="icon" data-alt="icon" class="icon" height="28" width="28">
-                                    <p data-content="title" class="title"></p>
-                                    <p data-content="caption" class="caption"></p>
-                                </button>
-                            </script>
-                    </ul>
-                    </script>
+    <progressive-shadow>
+        <div class="shadow"></div>
+        <div id="searcher" class="hide">
+            <form name="search">
+                <section id="search-bar">
+                    <div class="search-box">
+                        <img src="img/icon/newtab.svg" alt="" class="left-icon light-mode tab">
+                        <img src="img/icon/search.svg" alt="" class="left-icon light-mode page">
+                        <input type="text" spellcheck="false" autocorrect="off" placeholder="ページに移動" class="lang-jp">
+                        <input type="text" spellcheck="false" autocorrect="off" placeholder="Go to page" class="lang-en">
+                        <img src="img/icon/google.svg" alt="" class="right-icon">
+                    </div>
                 </section>
-            </section>
-            <section id="bottom-bar">
-                <button class="option tab-page">
-                    <span class="tab-page-context lang-jp">新しいタブで開く</span>
-                    <span class="tab-page-context lang-en">New Tab</span>
-                    <span class="key macos">Return ↩</span>
-                    <span class="key windows">Enter ↩</span>
-                </button>
-                <div class="option page">
-                    <span class="lang-jp">移動</span>
-                    <span class="lang-en">Go</span>
-                    <span class="key macos">Return ↩</span>
-                    <span class="key windows">Enter ↩</span>
-                </div>
-                <div class="option tab">
-                    <span class="lang-jp">開く</span>
-                    <span class="lang-en">Open</span>
-                    <span class="key macos">Return ↩</span>
-                    <span class="key windows">Enter ↩</span>
-                </div>
-                <div class="border"></div>
-                <div class="option">
-                    <span class="lang-jp">選択</span>
-                    <span class="lang-en">Select</span>
-                    <span class="key">↑</span>
-                    <span class="key">↓</span>
-                </div>
-                <div class="border"></div>
-                <button onclick="window.open('help.html')" style="font-size: 14px; opacity: 0.7;" class="option" >
-                    <img src="img/icon/help.svg" alt="help" class="light-mode">
-                </button>
-            </section>
-        </form>
-    </div>
+                <section id="output">
+                    <section id="suggest">
+                        <script class="suggest-box" type="text/html">
+                            <ul data-class> 
+                        <script class="suggest-item" type="text/html">
+                                    <button data-value="value" type="button" data-template-bind='{"attribute": "onclick", "value": "onclick"}'>
+                                        <img data-src="icon" data-alt="icon" class="icon" height="28" width="28">
+                                        <p data-content="title" class="title"></p>
+                                        <p data-content="caption" class="caption"></p>
+                                    </button>
+                                </script>
+                        </ul>
+                        </script>
+                    </section>
+                </section>
+                <section id="bottom-bar">
+                    <button class="option tab-page">
+                        <span class="tab-page-context lang-jp">新しいタブで開く</span>
+                        <span class="tab-page-context lang-en">New Tab</span>
+                        <span class="key macos">Return ↩</span>
+                        <span class="key windows">Enter ↩</span>
+                    </button>
+                    <div class="option page">
+                        <span class="lang-jp">移動</span>
+                        <span class="lang-en">Go</span>
+                        <span class="key macos">Return ↩</span>
+                        <span class="key windows">Enter ↩</span>
+                    </div>
+                    <div class="option tab">
+                        <span class="lang-jp">開く</span>
+                        <span class="lang-en">Open</span>
+                        <span class="key macos">Return ↩</span>
+                        <span class="key windows">Enter ↩</span>
+                    </div>
+                    <div class="border"></div>
+                    <div class="option">
+                        <span class="lang-jp">選択</span>
+                        <span class="lang-en">Select</span>
+                        <span class="key">↑</span>
+                        <span class="key">↓</span>
+                    </div>
+                    <div class="border"></div>
+                    <button onclick="window.open('help.html')" style="font-size: 14px; opacity: 0.7;" class="option" >
+                        <img src="img/icon/help.svg" alt="help" class="light-mode">
+                    </button>
+                </section>
+            </form>
+        </div>
+    </progressive-shadow>
 </body>
 </html>
