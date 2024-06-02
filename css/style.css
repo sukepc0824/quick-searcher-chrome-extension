@@ -42,7 +42,6 @@ body {
     z-index: -1;
     color: var(--main-text);
     background: transparent;
-    background: url(https://source.unsplash.com/random);
 }
 
 *:focus-visible {
