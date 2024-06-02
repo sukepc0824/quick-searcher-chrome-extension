@@ -1,10 +1,14 @@
 $(function () {
-    for (let i = 0; i < 100; i++) {
-        $("<div>").appendTo("progressive-blur")
+    for (let i = 0; i < 50; i++) {
+        $("<div>").appendTo("progressive-shadow")
+            .addClass("shadow")
             .css({
-                "height": (100 - i) + "%",
-                "backdrop-filter": "blur(" + i * 0.04 + "px)",
-                "-webkit-backdrop-filter": "blur(" + i* 0.04 + "px)"
+                "top": -i + "px",
+                "left": -i + "px",
+                "width": "calc(100% + " + i * 2 + "px)",
+                "height": "calc(100% + " + i * 2 + "px)",
+                "backdrop-filter": "blur(" + (50 - i) * 0.04 + "px)",
+                "-webkit-backdrop-filter": "blur(" + (50 - i) * 0.04 + "px)"
             })
     }
 })
