@@ -42,6 +42,7 @@ body {
     z-index: -1;
     color: var(--main-text);
     background: transparent;
+    background: url(https://source.unsplash.com/random);
 }
 
 *:focus-visible {
@@ -57,7 +58,9 @@ form {
 }
 
 #searcher {
+    position: absolute;
     width: 600px;
+    top: 50px;
     left: calc(50% - 300px);
     display: flex;
     flex-direction: column;
@@ -70,21 +73,12 @@ form {
     opacity: 1;
 }
 
-progressive-shadow {
-    width: fit-content;
-    height: fit-content;
-    position: absolute;
-    top: 80px;
-}
-
-progressive-shadow .shadow {
-    position: absolute;
-    z-index: -100;
-    width: calc(100% + 10px);
-    height: calc(100% + 10px);
-    top: -5px;
-    left: -5px;
-    backdrop-filter: blur(30px);
+progressive-blur {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(14px);
+    mask-image: linear-gradient(black 0%, transparent 40%);
 }
 
 #search-bar {
