@@ -155,20 +155,29 @@ $(function () {
         } else {
             if (tabPageWay === "tab") {
 
-            if (window.navigator.language.includes("ja")) {
-                $("#search-bar input").attr("placeholder", "新しいタブで開く")
-                $("#bottom-bar button.tab-page span.tab-page-context").text("ページに移動")
-            } else {
-                $("#search-bar input").attr("placeholder", "Open in new tab")
-                $("#bottom-bar button.tab-page span.tab-page-context").text("Go to page")
-            }
+                if (window.navigator.language.includes("ja")) {
+                    $("#search-bar input").attr("placeholder", "新しいタブで開く")
+                    $("#bottom-bar button.tab-page span.tab-page-context").text("ページに移動")
+                } else {
+                    $("#search-bar input").attr("placeholder", "Open in new tab")
+                    $("#bottom-bar button.tab-page span.tab-page-context").text("Go to page")
+                }
 
                 $("#search-bar img.tab").show()
                 $("#search-bar img.page").hide()
             }
         }
     }
+
     function tabPageToggle() {
+        $("#searcher").css({
+            "transform": "scale(0.985)"
+        })
+        window.setTimeout(function(){
+            $("#searcher").css({
+                "transform": "scale(1)"
+            })
+        }, 50);
         if (tabPageWay === "page") {
             tabPageWay = "tab"
             localStorage.setItem("tabpage-way", "tab")
