@@ -70,6 +70,7 @@ form {
     backdrop-filter: blur(30px);
     box-shadow: 0px 20px 40px -12px #00000056, 0 0px 50px rgba(0, 0, 0, 0.169);
     opacity: 1;
+    transition: transform 0.12s;
 }
 
 .progressive-blur {
