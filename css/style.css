@@ -58,19 +58,24 @@ form {
 
 #searcher {
     position: absolute;
-    width: 600px;
     top: 50px;
+    width: fit-content;
     left: calc(50% - 300px);
     display: flex;
     flex-direction: column;
     align-items: center;
+    opacity: 1;
+    border-radius: 16px;
+}
+
+#searcher form{
+    box-shadow: 0px 20px 40px -12px #00000056, 0 0px 50px rgba(0, 0, 0, 0.169);
+    backdrop-filter: blur(30px);
     border-radius: 16px;
     border: 1px solid var(--primary-border-color);
     background-color: var(--main-bg);
-    backdrop-filter: blur(30px);
-    box-shadow: 0px 20px 40px -12px #00000056, 0 0px 50px rgba(0, 0, 0, 0.169);
-    opacity: 1;
     transition: transform 0.12s;
+    width: 600px;
 }
 
 .progressive-blur {
