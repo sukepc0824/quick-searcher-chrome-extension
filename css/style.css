@@ -66,11 +66,11 @@ form {
     align-items: center;
     opacity: 1;
     border-radius: 16px;
+    backdrop-filter: blur(30px);
 }
 
 #searcher form{
     box-shadow: 0px 20px 40px -12px #00000056, 0 0px 50px rgba(0, 0, 0, 0.169);
-    backdrop-filter: blur(30px);
     border-radius: 16px;
     border: 1px solid var(--primary-border-color);
     background-color: var(--main-bg);
