@@ -106,7 +106,7 @@ form {
 }
 
 .progressive-blur::after {
-    background: linear-gradient(180deg, #aeb2b74f, transparent);
+    background: linear-gradient(180deg, #aeb2b730, transparent);
     position: absolute;
     transition: all 0.2s linear;
     height: 250px;
