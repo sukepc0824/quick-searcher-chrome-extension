@@ -106,6 +106,7 @@ form {
 }
 
 .progressive-blur::after {
+    background: linear-gradient(180deg, #aeb2b74f, transparent);
     position: absolute;
     transition: all 0.2s linear;
     height: 250px;
@@ -131,6 +132,7 @@ form {
 
 #searcher.hide+.progressive-blur::after {
     backdrop-filter: blur(0rem);
+    background: none;
 }
 
 #search-bar {
