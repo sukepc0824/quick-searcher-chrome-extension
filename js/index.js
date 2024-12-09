@@ -177,7 +177,11 @@ $(function () {
             $("#searcher").css({
                 "transform": "scale(1)"
             })
+            $("#searcher").removeAttr("style")
         }, 50);
+        window.setTimeout(function(){
+            $("#searcher").removeAttr("style")
+        }, 550);
         if (tabPageWay === "page") {
             tabPageWay = "tab"
             localStorage.setItem("tabpage-way", "tab")
